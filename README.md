@@ -54,4 +54,4 @@ npm run start
 采用添加中间过渡页，通过子组件改变父组件中的`transitionName`达到相同的目的
 
 ## 效果图
-![zc](./zc.png)
+![zc](./zc.gif)
