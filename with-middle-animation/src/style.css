@@ -18,26 +18,12 @@ html,body {
 	position: relative;
 }
 
-.home {
-	background-color: #f00;
-	text-align: center;
-	height: 100%
-}
-
-.me {
-	background-color: #0f0;
-	text-align: center;
-	height: 100%
-}
-
-.about {
-	background-color: #00f;
-	text-align: center;
-	height: 100%
+.home, .me, .about {
+	height: 100%;
+	padding: 0 5%;
 }
 
 .home  a,.me  a,.about a, .home h1,.me h1,.about h1 {
-	color: #fff;
 	font-size: 20px;
 	text-decoration: none;
 }
@@ -54,34 +40,34 @@ html,body {
 }
 
 :global(.forward-leave) {
-	/*opacity: 1;*/
+	opacity: 1;
     transform: translate(0, 0) translateZ(0);
 }
 
 :global(.forward-leave.forward-leave-active) {
-	/*opacity: 0;*/
+	opacity: 0.1;
     transform: translate(-100%, 0) translateZ(0);
-    transition: transform 0.2s linear;
+    transition: transform 0.2s linear, opacity;
 }
 
 :global(.back-enter) {
-	opacity: 0;
+	opacity: 0.1;
     transform: translate(-100%, 0) translateZ(0);
 }
 
 :global(.back-enter.back-enter-active) {
 	opacity: 1;
     transform: translate(0, 0) translateZ(0);
-    transition: transform 0.2s cubic-bezier(0.42, 0, 1, 1), opacity;
+    transition: transform 0.2s linear, opacity;
 }
 
 :global(.back-leave) {
-	/*opacity: 1;*/
+	opacity: 1;
     transform: translate(0, 0) translateZ(0);
 }
 
 :global(.back-leave.back-leave-active) {
-	/*opacity: 0;*/
+	opacity: 0.1;
     transform: translate(100%, 0) translateZ(0);
-    transition: transform 0.2s cubic-bezier(0.42, 0, 1, 1);
+    transition: transform 0.2s linear, opacity;
 }

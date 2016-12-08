@@ -12,7 +12,9 @@ module.exports = {
     module : {
         loaders : [
             { test : /\.js|\.jsx$/, loader : 'babel' },
-            { test : /\.css$/, loader : 'style!css' }
+            { test : /\.css$/, loader : 'style!css' },
+            { test: /\.jpe?g$|\.gif$|\.png|\.ico|\.swf|\.xap$/, loader: 'file?name=images/[name].[ext]' },
+            { test: /\.(eot|ttf|svg|woff2?)$/, loader: 'file?name=fonts/[name].[ext]' }
         ]
     },
     plugins : [
@@ -21,5 +23,9 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"development"'
         }),
+        new webpack.DllReferencePlugin({
+	        context: '.',
+	        manifest: require('./dll/vendor.manifest.json')
+	    }),
     ]
 };

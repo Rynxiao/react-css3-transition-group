@@ -15,6 +15,7 @@ import Me from './me';
 import Layout from './layout';
 
 import './style.css';
+import './bootstrap.min.css';
 
 const App = React.createClass({
     render () {

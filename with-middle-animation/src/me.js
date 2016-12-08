@@ -4,33 +4,78 @@ import React from 'react';
 import { Link } from 'react-router';
 import AnimateView from './AnimateView';
 
-const Me = React.createClass({
+import { Nav, NavItem, PageHeader, Jumbotron, Button, Panel, Table, Carousel, Well, ButtonToolbar,
+	Popover, OverlayTrigger } from 'react-bootstrap';
 
-	onRedirect(route) {
-		let { push } = this.props;
-		push(route);
+const Me = React.createClass({
+	handleSelect(selectedKey) {
+
+		let { push } = this.props, router;
+
+		switch(selectedKey) {
+			case 1: 
+				router = '/';
+				break;
+			case 2:
+				router = 'about';
+				break;
+			case 3:
+				router = 'me';
+				break;
+			default:
+				break;
+		}
+
+		push(router);
 	},
 
 	onBack() {
-		let { back } = this.props;
-		back();
+		this.props.back();
 	},
 
 	render() {
 		return (
 			<div className="me">
-				<h1><Link onClick={this.onBack}>返回</Link></h1>
-				<Link onClick={this.onRedirect.bind(this, '/')}>APP</Link>
-				<br />
-				<Link onClick={this.onRedirect.bind(this, 'about')}>ABOUT</Link>
-				<br />
-				me <br />me <br />me <br />me <br />me <br />me <br />me <br />me <br />me <br />
-				me <br />me <br />me <br />me <br />me <br />me <br />me <br />me <br />me <br />
-				me <br />me <br />me <br />me <br />me <br />me <br />me <br />me <br />me <br />
-				me <br />me <br />me <br />me <br />me <br />me <br />me <br />me <br />me <br />
-				me <br />me <br />me <br />me <br />me <br />me <br />me <br />me <br />me <br />
-				me <br />me <br />me <br />me <br />me <br />me <br />me <br />me <br />me <br />
-				me <br />me <br />me <br />me <br />me <br />me <br />me <br />me <br />me <br />
+				<PageHeader>Me <small>CSS3 Transition Group</small></PageHeader>
+				<Panel>
+				    <Nav bsStyle="pills" activeKey={3} onSelect={this.handleSelect}>
+					    <NavItem eventKey={1} href="/">Home</NavItem>
+					    <NavItem eventKey={2} title="About">About</NavItem>
+					    <NavItem eventKey={3}>Me</NavItem>
+					</Nav>
+				</Panel>
+				<Table striped bordered condensed hover>
+				    <thead>
+				      	<tr>
+				        	<th>#</th>
+				        	<th>First Name</th>
+				        	<th>Last Name</th>
+				        	<th>Username</th>
+				      	</tr>
+				    </thead>
+				    <tbody>
+				      	<tr>
+				        	<td>1</td>
+				        	<td>Mark</td>
+				        	<td>Otto</td>
+				        	<td>@mdo</td>
+				      	</tr>
+				      	<tr>
+				        	<td>2</td>
+				        	<td>Jacob</td>
+				        	<td>Thornton</td>
+				        	<td>@fat</td>
+				      	</tr>
+				      	<tr>
+				        	<td>3</td>
+				        	<td colSpan="2">Larry the Bird</td>
+				        	<td>@twitter</td>
+				      	</tr>
+				    </tbody>
+				</Table>
+				<Panel>
+					<Button bsStyle="link" onClick={this.onBack}>&#x3c;- 返回</Button>
+				</Panel>
 			</div>
 		);
 	}
